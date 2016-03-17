@@ -25,22 +25,19 @@ struct node * sortLinkedList(struct node *head)
 	{
 		if (head->next == NULL)
 			return head;
-		struct node *data1=head, *data2;
-		do 
+		struct node *data1, *data2;
+		for (data1 = head; data1 != NULL; data1 = data1->next)
 		{
-			data2 = data1->next;
-			do 
+			for (data2 = data1->next; data2 != NULL; data2 = data2->next)
 			{
 				if ((data1->num) > (data2->num))
 				{
-					int temp = data1->num;
+					int tmp = data1->num;
 					data1->num = data2->num;
-					data2->num = temp;
+					data2->num = tmp;
 				}
-				data2 = data2->next;
-			}while ((data2->next) != NULL);
-			data1 = data1->next;
-		}while ((data1->next) != NULL);
+			}
+		}
 	return head;
 	}
 	else
